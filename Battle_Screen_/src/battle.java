@@ -7,12 +7,12 @@
  *
  * @author eltho
  */
-public class battle extends javax.swing.JFrame {
+public class Battle extends javax.swing.JFrame {
 
     /**
      * Creates new form battle
      */
-    public battle() {
+    public Battle() {
         initComponents();
     }
 
@@ -45,38 +45,31 @@ public class battle extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Jogador");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Inimigo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 82, -1));
 
         labelMPJogador.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelMPJogador.setForeground(new java.awt.Color(0, 0, 0));
         labelMPJogador.setText("Mana: 0");
         getContentPane().add(labelMPJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 160, -1));
 
         labelVidaJogador1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelVidaJogador1.setForeground(new java.awt.Color(0, 0, 0));
         labelVidaJogador1.setText("Vida: 0");
         getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 160, -1));
 
         labelVidaInimigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelVidaInimigo.setForeground(new java.awt.Color(0, 0, 0));
         labelVidaInimigo.setText("Vida: 0");
         getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 170, 160, -1));
 
         labelMPInimigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelMPInimigo.setForeground(new java.awt.Color(0, 0, 0));
         labelMPInimigo.setText("Mana: 0");
         getContentPane().add(labelMPInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 200, 160, -1));
 
         txtAreaJogador.setColumns(20);
         txtAreaJogador.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        txtAreaJogador.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaJogador.setRows(5);
         txtAreaJogador.setText("O que Charmeleon deve fazer ?\n");
         jScrollPane1.setViewportView(txtAreaJogador);
@@ -84,22 +77,23 @@ public class battle extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 480, 805, 234));
 
         btnSPAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSPAttack.setForeground(new java.awt.Color(0, 0, 0));
         btnSPAttack.setText("Ataque SP");
         getContentPane().add(btnSPAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 480, 152, 104));
 
         btnRun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnRun.setForeground(new java.awt.Color(0, 0, 0));
         btnRun.setText("Fugir");
         getContentPane().add(btnRun, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 602, 152, 104));
 
         btnAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAttack.setForeground(new java.awt.Color(0, 0, 0));
         btnAttack.setText("Ataque");
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttackActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(886, 480, 152, 104));
 
         btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDefense.setForeground(new java.awt.Color(0, 0, 0));
         btnDefense.setText("Defender");
         getContentPane().add(btnDefense, new org.netbeans.lib.awtextra.AbsoluteConstraints(886, 602, 152, 104));
 
@@ -116,40 +110,14 @@ public class battle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAttackActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new battle().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttack;
