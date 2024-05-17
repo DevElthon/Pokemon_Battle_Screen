@@ -32,6 +32,7 @@ public class GameOver extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBackToMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnBackToMenu.setForeground(new java.awt.Color(0, 0, 0));
         btnBackToMenu.setText("Voltar ao início");
         btnBackToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

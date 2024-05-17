@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import Pokemons.*;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author eltho
@@ -12,8 +15,27 @@ public class Battle extends javax.swing.JFrame {
     /**
      * Creates new form battle
      */
+    Charmander charmander = new Charmander(new ImageIcon(getClass().getResource("/images/charmander.png")), "Charmander", 100, 10, 10, 10, 10, 10, 10, 10);
+    Blastoise blastoise = new Blastoise(new ImageIcon(getClass().getResource("/images/blastoise.png")), "Blastoise", 100, 100, 10, 10, 10, 10, 10, 10);
+    
+    Pokemon currentPokemon = charmander;
+    
     public Battle() {
         initComponents();
+        jp_btnAttacks.setVisible(false);
+
+        // Player
+        labelJogador.setIcon(currentPokemon.getSprite());
+        lblTextBattle.setText("O que o " + currentPokemon.getName() + " Deve fazer?");
+        lblNomePokemon.setText(currentPokemon.getName());
+        pb_Vida.setMaximum(currentPokemon.getHP());
+        currentPokemon.setCurrentHP(50);
+        labelVidaJogador1.setText("Vida: " + String.valueOf(currentPokemon.getCurrentHP()));
+        pb_Vida.setValue(currentPokemon.getCurrentHP());
+        labelMPJogador.setText("Mana: " + String.valueOf(currentPokemon.getMana()));
+        pb_mana.setValue(currentPokemon.getMana());
+        //Enemy
+        
     }
 
     /**
@@ -25,64 +47,134 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblTextBattle = new javax.swing.JLabel();
+        pb_Vida = new javax.swing.JProgressBar();
+        lblNomePokemon = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelMPJogador = new javax.swing.JLabel();
         labelVidaJogador1 = new javax.swing.JLabel();
         labelVidaInimigo = new javax.swing.JLabel();
         labelMPInimigo = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaJogador = new javax.swing.JTextArea();
-        btnSPAttack = new javax.swing.JButton();
+        labelJogador = new javax.swing.JLabel();
+        labelVilao = new javax.swing.JLabel();
+        pb_mana = new javax.swing.JProgressBar();
+        jp_btnAttacks = new javax.swing.JPanel();
+        btnGolpe1 = new javax.swing.JButton();
+        btnGolpe4 = new javax.swing.JButton();
+        btnGolpe3 = new javax.swing.JButton();
+        btnGolpe2 = new javax.swing.JButton();
+        jp_btnAcoes = new javax.swing.JPanel();
+        btnTrocar = new javax.swing.JButton();
         btnRun = new javax.swing.JButton();
-        btnAttack = new javax.swing.JButton();
         btnDefense = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        btnAttack = new javax.swing.JButton();
+        jProgressBar2 = new javax.swing.JProgressBar();
+        jProgressBar3 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Jogador");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+        lblTextBattle.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        lblTextBattle.setText("O que o pokemon deve fazer?");
+        jPanel1.add(lblTextBattle);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 820, 230));
+
+        pb_Vida.setBackground(new java.awt.Color(0, 0, 0));
+        pb_Vida.setForeground(new java.awt.Color(0, 255, 51));
+        getContentPane().add(pb_Vida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 270, 10));
+
+        lblNomePokemon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNomePokemon.setText("Jogador");
+        getContentPane().add(lblNomePokemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Inimigo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 82, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 82, -1));
 
-        labelMPJogador.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelMPJogador.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelMPJogador.setText("Mana: 0");
-        getContentPane().add(labelMPJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 160, -1));
+        getContentPane().add(labelMPJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 140, 20));
 
         labelVidaJogador1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelVidaJogador1.setText("Vida: 0");
-        getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 160, -1));
+        getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 160, -1));
 
-        labelVidaInimigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelVidaInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelVidaInimigo.setText("Vida: 0");
-        getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 170, 160, -1));
+        getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 180, 70, -1));
 
-        labelMPInimigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelMPInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelMPInimigo.setText("Mana: 0");
-        getContentPane().add(labelMPInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 200, 160, -1));
+        getContentPane().add(labelMPInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 160, -1));
 
-        txtAreaJogador.setColumns(20);
-        txtAreaJogador.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        txtAreaJogador.setRows(5);
-        txtAreaJogador.setText("O que Charmeleon deve fazer ?\n");
-        jScrollPane1.setViewportView(txtAreaJogador);
+        labelJogador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/charmeleon.png"))); // NOI18N
+        getContentPane().add(labelJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 174, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 480, 805, 234));
+        labelVilao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/noivern.png"))); // NOI18N
+        labelVilao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(labelVilao, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 267, -1));
 
-        btnSPAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSPAttack.setText("Ataque SP");
-        getContentPane().add(btnSPAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 480, 152, 104));
+        pb_mana.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_mana, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 270, 10));
+
+        btnGolpe1.setText("jButton1");
+
+        btnGolpe4.setText("jButton4");
+
+        btnGolpe3.setText("jButton3");
+
+        btnGolpe2.setText("jButton2");
+
+        javax.swing.GroupLayout jp_btnAttacksLayout = new javax.swing.GroupLayout(jp_btnAttacks);
+        jp_btnAttacks.setLayout(jp_btnAttacksLayout);
+        jp_btnAttacksLayout.setHorizontalGroup(
+            jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_btnAttacksLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(btnGolpe4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(btnGolpe3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
+        );
+        jp_btnAttacksLayout.setVerticalGroup(
+            jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_btnAttacksLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(btnGolpe3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGolpe4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGolpe2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jp_btnAttacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 320, 230));
+
+        jp_btnAcoes.setLayout(null);
+
+        btnTrocar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTrocar.setText("Trocar");
+        jp_btnAcoes.add(btnTrocar);
+        btnTrocar.setBounds(160, 20, 140, 60);
 
         btnRun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnRun.setText("Fugir");
-        getContentPane().add(btnRun, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 602, 152, 104));
+        jp_btnAcoes.add(btnRun);
+        btnRun.setBounds(160, 110, 140, 70);
+
+        btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDefense.setText("Defender");
+        jp_btnAcoes.add(btnDefense);
+        btnDefense.setBounds(10, 110, 130, 70);
 
         btnAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnAttack.setText("Ataque");
@@ -91,49 +183,96 @@ public class Battle extends javax.swing.JFrame {
                 btnAttackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(886, 480, 152, 104));
+        jp_btnAcoes.add(btnAttack);
+        btnAttack.setBounds(10, 20, 130, 60);
 
-        btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDefense.setText("Defender");
-        getContentPane().add(btnDefense, new org.netbeans.lib.awtextra.AbsoluteConstraints(886, 602, 152, 104));
+        getContentPane().add(jp_btnAcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 320, 230));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/charmeleon.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 174, -1));
+        jProgressBar2.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 210, 270, 10));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/noivern.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 267, -1));
+        jProgressBar3.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jProgressBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 170, 270, 10));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/field_1.jpg"))); // NOI18N
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
-        // TODO add your handling code here:
+        jp_btnAttacks.setVisible(true);
+        jp_btnAcoes.setVisible(false);
+        
+        btnGolpe1.setText(currentPokemon.getAttacks()[0].getName());
+        btnGolpe2.setText(currentPokemon.getAttacks()[1].getName());
+        btnGolpe3.setText(currentPokemon.getAttacks()[2].getName());
+        btnGolpe4.setText(currentPokemon.getAttacks()[3].getName());
     }//GEN-LAST:event_btnAttackActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Battle().setVisible(true);
+            }
+        });
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnDefense;
+    private javax.swing.JButton btnGolpe1;
+    private javax.swing.JButton btnGolpe2;
+    private javax.swing.JButton btnGolpe3;
+    private javax.swing.JButton btnGolpe4;
     private javax.swing.JButton btnRun;
-    private javax.swing.JButton btnSPAttack;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnTrocar;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JProgressBar jProgressBar3;
+    private javax.swing.JPanel jp_btnAcoes;
+    private javax.swing.JPanel jp_btnAttacks;
+    private javax.swing.JLabel labelJogador;
     private javax.swing.JLabel labelMPInimigo;
     private javax.swing.JLabel labelMPJogador;
     private javax.swing.JLabel labelVidaInimigo;
     private javax.swing.JLabel labelVidaJogador1;
-    private javax.swing.JTextArea txtAreaJogador;
+    private javax.swing.JLabel labelVilao;
+    private javax.swing.JLabel lblNomePokemon;
+    private javax.swing.JLabel lblTextBattle;
+    private javax.swing.JProgressBar pb_Vida;
+    private javax.swing.JProgressBar pb_mana;
     // End of variables declaration//GEN-END:variables
 }
