@@ -12,12 +12,14 @@ public class Moves {
     private String name;
     private int power;
     private String type;
+    private String attribute;
     private int accuracy;
     private int cost;
 
-    public Moves(String name, int power, String type, int accuracy, int cost) {
+    public Moves(String name, int power, String type, String atribute, int accuracy, int cost) {
         this.name = name;
         this.power = power;
+        this.attribute = atribute;
         this.type = type;
         this.accuracy = accuracy;
         this.cost = cost;
@@ -61,6 +63,14 @@ public class Moves {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String Attribute) {
+        this.attribute = Attribute;
     }
     
     

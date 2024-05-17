@@ -10,8 +10,8 @@ package Poderes;
  */
 public class Tackle extends Moves{
     
-    public Tackle(String name, int power, String type, int accuracy, int cost) {
-        super(name, power, type, accuracy, cost);
+    public Tackle(String name, int power, String type, String attribute, int accuracy, int cost) {
+        super(name, power, type, attribute, accuracy, cost);
     }
     
     

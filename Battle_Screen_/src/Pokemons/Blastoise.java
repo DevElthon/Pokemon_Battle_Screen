@@ -13,10 +13,10 @@ import javax.swing.ImageIcon;
  */
 public class Blastoise extends Pokemon{
     
-    Moves tackle = new Moves("Tackle", 40, "Normal", 100, 0);
-    Moves waterGun = new Moves("Water Gun", 40, "Water", 100, 20);
-    Moves bite = new Moves("Bite", 40, "Dark", 60, 0);
-    Moves protect = new Moves("Hydro Pump", 40, "Water", 100, 40);
+    Moves tackle = new Moves("Tackle", 40, "Physical","Normal", 100, 0);
+    Moves waterGun = new Moves("Water Gun", 40, "Special", "Water", 100, 20);
+    Moves bite = new Moves("Bite", 40, "Physical", "Dark", 60, 0);
+    Moves protect = new Moves("Hydro Pump", 40, "Special", "Water", 100, 40);
     
     
     public Blastoise(ImageIcon sprite, String name, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {

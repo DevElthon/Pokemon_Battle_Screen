@@ -23,10 +23,11 @@ public class Battle extends javax.swing.JFrame {
     public Battle() {
         initComponents();
         jp_btnAttacks.setVisible(false);
-
+        jp_info.setVisible(false);
+        
         // Player
         labelJogador.setIcon(currentPokemon.getSprite());
-        lblTextBattle.setText("O que o " + currentPokemon.getName() + " Deve fazer?");
+        lblTextBattle.setText("O que o " + currentPokemon.getName() + " deve fazer?");
         lblNomePokemon.setText(currentPokemon.getName());
         pb_Vida.setMaximum(currentPokemon.getHP());
         currentPokemon.setCurrentHP(50);
@@ -47,11 +48,17 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jp_CaixaDeDialogo = new javax.swing.JPanel();
         lblTextBattle = new javax.swing.JLabel();
+        jp_info = new javax.swing.JPanel();
+        infoGolpeTipo = new javax.swing.JLabel();
+        infoGolpeDano = new javax.swing.JLabel();
+        infoGolpeAtributo = new javax.swing.JLabel();
+        infoGolpeCusto = new javax.swing.JLabel();
+        InfoGolpeNome = new javax.swing.JLabel();
         pb_Vida = new javax.swing.JProgressBar();
         lblNomePokemon = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNomePokemonOponente = new javax.swing.JLabel();
         labelMPJogador = new javax.swing.JLabel();
         labelVidaJogador1 = new javax.swing.JLabel();
         labelVidaInimigo = new javax.swing.JLabel();
@@ -59,28 +66,104 @@ public class Battle extends javax.swing.JFrame {
         labelJogador = new javax.swing.JLabel();
         labelVilao = new javax.swing.JLabel();
         pb_mana = new javax.swing.JProgressBar();
-        jp_btnAttacks = new javax.swing.JPanel();
-        btnGolpe1 = new javax.swing.JButton();
-        btnGolpe4 = new javax.swing.JButton();
-        btnGolpe3 = new javax.swing.JButton();
-        btnGolpe2 = new javax.swing.JButton();
         jp_btnAcoes = new javax.swing.JPanel();
         btnTrocar = new javax.swing.JButton();
         btnRun = new javax.swing.JButton();
         btnDefense = new javax.swing.JButton();
         btnAttack = new javax.swing.JButton();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar3 = new javax.swing.JProgressBar();
-        jLabel6 = new javax.swing.JLabel();
+        jp_btnAttacks = new javax.swing.JPanel();
+        btnGolpe1 = new javax.swing.JButton();
+        btnGolpe4 = new javax.swing.JButton();
+        btnGolpe3 = new javax.swing.JButton();
+        btnGolpe2 = new javax.swing.JButton();
+        pb_VidaOponente = new javax.swing.JProgressBar();
+        pb_ManaOponente = new javax.swing.JProgressBar();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTextBattle.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         lblTextBattle.setText("O que o pokemon deve fazer?");
-        jPanel1.add(lblTextBattle);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 820, 230));
+        infoGolpeTipo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        infoGolpeTipo.setText("texto do golpe l1");
+
+        infoGolpeDano.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        infoGolpeDano.setText("texto do golpe l2");
+
+        infoGolpeAtributo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        infoGolpeAtributo.setText("texto do golpe l3");
+
+        infoGolpeCusto.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        infoGolpeCusto.setText("texto do golpe l4");
+
+        InfoGolpeNome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        InfoGolpeNome.setText("nome do golpe");
+
+        javax.swing.GroupLayout jp_infoLayout = new javax.swing.GroupLayout(jp_info);
+        jp_info.setLayout(jp_infoLayout);
+        jp_infoLayout.setHorizontalGroup(
+            jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_infoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_infoLayout.createSequentialGroup()
+                                .addComponent(infoGolpeDano, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(114, 114, 114))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_infoLayout.createSequentialGroup()
+                                .addComponent(infoGolpeCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(106, 106, 106))))
+                    .addGroup(jp_infoLayout.createSequentialGroup()
+                        .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(infoGolpeTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InfoGolpeNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jp_infoLayout.createSequentialGroup()
+                        .addComponent(infoGolpeAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jp_infoLayout.setVerticalGroup(
+            jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_infoLayout.createSequentialGroup()
+                .addComponent(InfoGolpeNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(infoGolpeTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoGolpeDano, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoGolpeAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(infoGolpeCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout jp_CaixaDeDialogoLayout = new javax.swing.GroupLayout(jp_CaixaDeDialogo);
+        jp_CaixaDeDialogo.setLayout(jp_CaixaDeDialogoLayout);
+        jp_CaixaDeDialogoLayout.setHorizontalGroup(
+            jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                .addGroup(jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jp_info, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblTextBattle)))
+                .addGap(248, 248, 248))
+        );
+        jp_CaixaDeDialogoLayout.setVerticalGroup(
+            jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(lblTextBattle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jp_info, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        getContentPane().add(jp_CaixaDeDialogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 820, 230));
 
         pb_Vida.setBackground(new java.awt.Color(0, 0, 0));
         pb_Vida.setForeground(new java.awt.Color(0, 255, 51));
@@ -90,21 +173,21 @@ public class Battle extends javax.swing.JFrame {
         lblNomePokemon.setText("Jogador");
         getContentPane().add(lblNomePokemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Inimigo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 82, -1));
+        lblNomePokemonOponente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNomePokemonOponente.setText("Inimigo");
+        getContentPane().add(lblNomePokemonOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 82, -1));
 
         labelMPJogador.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelMPJogador.setText("Mana: 0");
         getContentPane().add(labelMPJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 140, 20));
 
-        labelVidaJogador1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelVidaJogador1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelVidaJogador1.setText("Vida: 0");
-        getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 160, -1));
+        getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 90, -1));
 
         labelVidaInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelVidaInimigo.setText("Vida: 0");
-        getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 180, 70, -1));
+        getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 180, 80, -1));
 
         labelMPInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelMPInimigo.setText("Mana: 0");
@@ -120,13 +203,67 @@ public class Battle extends javax.swing.JFrame {
         pb_mana.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(pb_mana, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 270, 10));
 
+        jp_btnAcoes.setLayout(null);
+
+        btnTrocar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTrocar.setText("Trocar");
+        jp_btnAcoes.add(btnTrocar);
+        btnTrocar.setBounds(170, 30, 140, 70);
+
+        btnRun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnRun.setText("Fugir");
+        btnRun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunActionPerformed(evt);
+            }
+        });
+        jp_btnAcoes.add(btnRun);
+        btnRun.setBounds(170, 120, 140, 70);
+
+        btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDefense.setText("Defender");
+        jp_btnAcoes.add(btnDefense);
+        btnDefense.setBounds(20, 120, 130, 70);
+
+        btnAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAttack.setText("Ataque");
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttackActionPerformed(evt);
+            }
+        });
+        jp_btnAcoes.add(btnAttack);
+        btnAttack.setBounds(20, 30, 130, 70);
+
+        getContentPane().add(jp_btnAcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 480, 320, 230));
+
         btnGolpe1.setText("jButton1");
+        btnGolpe1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe1MouseMoved(evt);
+            }
+        });
 
         btnGolpe4.setText("jButton4");
+        btnGolpe4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe4MouseMoved(evt);
+            }
+        });
 
         btnGolpe3.setText("jButton3");
+        btnGolpe3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe3MouseMoved(evt);
+            }
+        });
 
         btnGolpe2.setText("jButton2");
+        btnGolpe2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe2MouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_btnAttacksLayout = new javax.swing.GroupLayout(jp_btnAttacks);
         jp_btnAttacks.setLayout(jp_btnAttacksLayout);
@@ -157,45 +294,16 @@ public class Battle extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jp_btnAttacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 320, 230));
+        getContentPane().add(jp_btnAttacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 480, 320, 230));
 
-        jp_btnAcoes.setLayout(null);
+        pb_VidaOponente.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_VidaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 210, 270, 10));
 
-        btnTrocar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnTrocar.setText("Trocar");
-        jp_btnAcoes.add(btnTrocar);
-        btnTrocar.setBounds(160, 20, 140, 60);
+        pb_ManaOponente.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_ManaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 170, 270, 10));
 
-        btnRun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnRun.setText("Fugir");
-        jp_btnAcoes.add(btnRun);
-        btnRun.setBounds(160, 110, 140, 70);
-
-        btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDefense.setText("Defender");
-        jp_btnAcoes.add(btnDefense);
-        btnDefense.setBounds(10, 110, 130, 70);
-
-        btnAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAttack.setText("Ataque");
-        btnAttack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAttackActionPerformed(evt);
-            }
-        });
-        jp_btnAcoes.add(btnAttack);
-        btnAttack.setBounds(10, 20, 130, 60);
-
-        getContentPane().add(jp_btnAcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 320, 230));
-
-        jProgressBar2.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 210, 270, 10));
-
-        jProgressBar3.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jProgressBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 170, 270, 10));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/field_1.jpg"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/field_1.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,7 +316,29 @@ public class Battle extends javax.swing.JFrame {
         btnGolpe2.setText(currentPokemon.getAttacks()[1].getName());
         btnGolpe3.setText(currentPokemon.getAttacks()[2].getName());
         btnGolpe4.setText(currentPokemon.getAttacks()[3].getName());
+        
+        lblTextBattle.setText("Com qual ataque o " + currentPokemon.getName() + " vai atacar ?");
     }//GEN-LAST:event_btnAttackActionPerformed
+
+    private void btnGolpe1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe1MouseMoved
+        AlterarInfoDeAtaque(0);
+    }//GEN-LAST:event_btnGolpe1MouseMoved
+
+    private void btnGolpe2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe2MouseMoved
+        AlterarInfoDeAtaque(1);
+    }//GEN-LAST:event_btnGolpe2MouseMoved
+
+    private void btnGolpe3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe3MouseMoved
+        AlterarInfoDeAtaque(2); 
+    }//GEN-LAST:event_btnGolpe3MouseMoved
+
+    private void btnGolpe4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe4MouseMoved
+        AlterarInfoDeAtaque(3);
+    }//GEN-LAST:event_btnGolpe4MouseMoved
+
+    private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        lblTextBattle.setText("Você não pode fugir da primeira batalha. Tente escolher outras ações!");
+    }//GEN-LAST:event_btnRunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +379,8 @@ public class Battle extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel InfoGolpeNome;
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnDefense;
     private javax.swing.JButton btnGolpe1;
@@ -257,13 +389,14 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton btnGolpe4;
     private javax.swing.JButton btnRun;
     private javax.swing.JButton btnTrocar;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
+    private javax.swing.JLabel infoGolpeAtributo;
+    private javax.swing.JLabel infoGolpeCusto;
+    private javax.swing.JLabel infoGolpeDano;
+    private javax.swing.JLabel infoGolpeTipo;
+    private javax.swing.JPanel jp_CaixaDeDialogo;
     private javax.swing.JPanel jp_btnAcoes;
     private javax.swing.JPanel jp_btnAttacks;
+    private javax.swing.JPanel jp_info;
     private javax.swing.JLabel labelJogador;
     private javax.swing.JLabel labelMPInimigo;
     private javax.swing.JLabel labelMPJogador;
@@ -271,8 +404,21 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JLabel labelVidaJogador1;
     private javax.swing.JLabel labelVilao;
     private javax.swing.JLabel lblNomePokemon;
+    private javax.swing.JLabel lblNomePokemonOponente;
     private javax.swing.JLabel lblTextBattle;
+    private javax.swing.JProgressBar pb_ManaOponente;
     private javax.swing.JProgressBar pb_Vida;
+    private javax.swing.JProgressBar pb_VidaOponente;
     private javax.swing.JProgressBar pb_mana;
     // End of variables declaration//GEN-END:variables
+
+    private void AlterarInfoDeAtaque(int i){
+        jp_info.setVisible(true);
+        
+        InfoGolpeNome.setText(currentPokemon.getAttacks()[i].getName());
+        infoGolpeTipo.setText("Tipo: " + currentPokemon.getAttacks()[i].getType());
+        infoGolpeDano.setText("Dano: " + String.valueOf(currentPokemon.getAttacks()[i].getPower()));
+        infoGolpeAtributo.setText("Atributo: " + currentPokemon.getAttacks()[i].getAttribute());
+        infoGolpeCusto.setText("Custo: " + String.valueOf(currentPokemon.getAttacks()[i].getCost()));
+    }
 }
