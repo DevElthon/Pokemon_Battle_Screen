@@ -1,0 +1,815 @@
+package scenario;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
+import Pokemons.*;
+import Classes.BattleManager;
+import Poderes.Moves;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.Timer;
+/**
+ *
+ * @author eltho
+ */
+public class Battle extends javax.swing.JFrame {
+
+    //Pokémons
+    Charmeleon charmeleon = new Charmeleon(new ImageIcon(getClass().getResource("/images/pokemon/charmeleon.png")), new ImageIcon(getClass().getResource("/images/icon/iconCharmeleon.png")), "Charmeleon", "Fire", 100, 10, 10, 10, 10, 10, 10, 10, true);
+    Blastoise blastoise = new Blastoise(new ImageIcon(getClass().getResource("/images/pokemon/blastoise.png")), new ImageIcon(getClass().getResource("/images/icon/iconBlastoise.png")), "Blastoise", "Water",100, 100, 10, 10, 10, 10, 10, 10, true);
+    Noivern noivern = new Noivern(new ImageIcon(getClass().getResource("/images/pokemon/noivern.png")), new ImageIcon(getClass().getResource("/images/icon/iconNoivern.png")), "Noivern", "Flying", "Dragon", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Ampharos ampharos = new Ampharos(new ImageIcon(getClass().getResource("/images/pokemon/ampharos.png")), new ImageIcon(getClass().getResource("/images/icon/iconAmpharos.png")), "Ampharos", "Electric", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Gengar gengar = new Gengar(new ImageIcon(getClass().getResource("/images/pokemon/gengar.png")), new ImageIcon(getClass().getResource("/images/icon/iconGengar.png")), "Gengar", "Ghost", "Poison", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Gardevoir gardevoir = new Gardevoir(new ImageIcon(getClass().getResource("/images/pokemon/gardevoir.png")), new ImageIcon(getClass().getResource("/images/icon/iconGardevoir.png")), "Gardevoir", "Fairy", "Psychic", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Venusaur venusaur = new Venusaur(new ImageIcon(getClass().getResource("/images/pokemon/venusaur.png")), new ImageIcon(getClass().getResource("/images/icon/iconVenusaur.png")), "Venusaur", "Grass", "Poison", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Blissey blissey = new Blissey(new ImageIcon(getClass().getResource("/images/pokemon/blissey.png")), new ImageIcon(getClass().getResource("/images/icon/iconBlissey.png")), "Blissey", "Normal", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    
+    //Pokémons atuais da batalha
+    Pokemon currentPokemon = charmeleon;
+    Pokemon currentEnemyPokemon = ampharos;
+    
+    //Pokemons fora da batalha
+    Pokemon []outPokemon = {blastoise, gengar, venusaur, blissey};
+    Pokemon []outEnemyPokemon = {noivern, gardevoir};
+       
+    BattleManager battleManager = new BattleManager();
+    
+    Random rand = new Random();
+    
+    boolean enemyTurn = false;
+    
+    public Battle() {
+        initComponents();
+        //setVisual
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/images.jpg")));
+        jp_btnAttacks.setVisible(false);
+        jp_btnTroca.setVisible(false);
+        jp_info.setVisible(false);
+
+        //inicio de jogo
+        battleManager.gameInit(charmeleon, blastoise, gengar, venusaur, blissey, ampharos, noivern, gardevoir);
+        
+        // Player
+        AtualizarInfoBarJogador();
+        //Enemy
+        AtualizarInfoBarVilao();
+        
+        //Main Loop
+        Timer timer = new Timer(2500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if (enemyTurn){
+                    
+                    Moves move = currentEnemyPokemon.getAttacks()[rand.nextInt(4)];
+                    
+                    battleManager.enemyAttack(currentPokemon, currentEnemyPokemon, move);
+                    combateInfo(currentEnemyPokemon, move);
+                    enemyTurn = false;
+                }
+                
+                if (currentEnemyPokemon.getCurrentHP() <= 0){
+                    currentEnemyPokemon = outEnemyPokemon[rand.nextInt(outEnemyPokemon.length)];
+                    currentEnemyPokemon.setCurrentHP(0);
+                    AtualizarInfoBarVilao();
+                }
+                
+                if (currentPokemon.getCurrentHP() <= 0){
+                    currentPokemon.setCurrentHP(0);
+                    currentPokemon.setVivo(false);
+                    alterarPainelTroca();
+                }
+                
+                atualizarStatusJogador();
+                atualizarStatusVilao();    
+                
+            }
+        });
+        
+        timer.start();
+         
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jp_CaixaDeDialogo = new javax.swing.JPanel();
+        lblTextBattle = new javax.swing.JLabel();
+        jp_info = new javax.swing.JPanel();
+        infoGolpeTipo = new javax.swing.JLabel();
+        infoGolpeDano = new javax.swing.JLabel();
+        infoGolpeAtributo = new javax.swing.JLabel();
+        infoGolpeCusto = new javax.swing.JLabel();
+        InfoGolpeNome = new javax.swing.JLabel();
+        pb_Vida = new javax.swing.JProgressBar();
+        lblNomePokemon = new javax.swing.JLabel();
+        lblNomePokemonOponente = new javax.swing.JLabel();
+        labelMPJogador = new javax.swing.JLabel();
+        labelVidaJogador1 = new javax.swing.JLabel();
+        labelVidaInimigo = new javax.swing.JLabel();
+        labelMPInimigo = new javax.swing.JLabel();
+        labelJogador = new javax.swing.JLabel();
+        labelVilao = new javax.swing.JLabel();
+        pb_mana = new javax.swing.JProgressBar();
+        jp_btnAcoes = new javax.swing.JPanel();
+        btnTrocar = new javax.swing.JButton();
+        btnRun = new javax.swing.JButton();
+        btnDefense = new javax.swing.JButton();
+        btnAttack = new javax.swing.JButton();
+        jp_btnAttacks = new javax.swing.JPanel();
+        btnGolpe1 = new javax.swing.JButton();
+        btnGolpe4 = new javax.swing.JButton();
+        btnGolpe3 = new javax.swing.JButton();
+        btnGolpe2 = new javax.swing.JButton();
+        jp_btnTroca = new javax.swing.JPanel();
+        iconPoke1 = new javax.swing.JLabel();
+        iconPoke2 = new javax.swing.JLabel();
+        iconPoke3 = new javax.swing.JLabel();
+        iconPoke4 = new javax.swing.JLabel();
+        pb_iconPoke1HP = new javax.swing.JProgressBar();
+        pb_iconPoke2HP = new javax.swing.JProgressBar();
+        pb_iconPoke3HP = new javax.swing.JProgressBar();
+        pb_iconPoke4HP = new javax.swing.JProgressBar();
+        pb_iconPoke1Mana = new javax.swing.JProgressBar();
+        pb_iconPoke2Mana = new javax.swing.JProgressBar();
+        pb_iconPoke3Mana = new javax.swing.JProgressBar();
+        pb_iconPoke4Mana = new javax.swing.JProgressBar();
+        lbl_hpPoke1 = new javax.swing.JLabel();
+        lbl_hpPoke2 = new javax.swing.JLabel();
+        lbl_hpPoke3 = new javax.swing.JLabel();
+        lbl_hpPoke4 = new javax.swing.JLabel();
+        lbl_manaPoke1 = new javax.swing.JLabel();
+        lbl_manaPoke2 = new javax.swing.JLabel();
+        lbl_manaPoke3 = new javax.swing.JLabel();
+        lbl_manaPoke4 = new javax.swing.JLabel();
+        btnTroca1 = new javax.swing.JButton();
+        btnTroca2 = new javax.swing.JButton();
+        btnTroca3 = new javax.swing.JButton();
+        btnTroca4 = new javax.swing.JButton();
+        pb_VidaOponente = new javax.swing.JProgressBar();
+        pb_ManaOponente = new javax.swing.JProgressBar();
+        Background = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTextBattle.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        lblTextBattle.setText("O que o pokemon deve fazer?");
+
+        infoGolpeTipo.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        infoGolpeTipo.setText("texto do golpe l1");
+
+        infoGolpeDano.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        infoGolpeDano.setText("texto do golpe l2");
+
+        infoGolpeAtributo.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        infoGolpeAtributo.setText("texto do golpe l3");
+
+        infoGolpeCusto.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        infoGolpeCusto.setText("texto do golpe l4");
+
+        InfoGolpeNome.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
+        InfoGolpeNome.setText("nome do golpe");
+
+        javax.swing.GroupLayout jp_infoLayout = new javax.swing.GroupLayout(jp_info);
+        jp_info.setLayout(jp_infoLayout);
+        jp_infoLayout.setHorizontalGroup(
+            jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_infoLayout.createSequentialGroup()
+                .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infoGolpeTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infoGolpeDano, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infoGolpeCusto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(infoGolpeAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(jp_infoLayout.createSequentialGroup()
+                .addComponent(InfoGolpeNome, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_infoLayout.setVerticalGroup(
+            jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfoGolpeNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoGolpeTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infoGolpeAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jp_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(infoGolpeCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infoGolpeDano, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jp_CaixaDeDialogoLayout = new javax.swing.GroupLayout(jp_CaixaDeDialogo);
+        jp_CaixaDeDialogo.setLayout(jp_CaixaDeDialogoLayout);
+        jp_CaixaDeDialogoLayout.setHorizontalGroup(
+            jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                .addGroup(jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblTextBattle))
+                    .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jp_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(275, 275, 275))
+        );
+        jp_CaixaDeDialogoLayout.setVerticalGroup(
+            jp_CaixaDeDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_CaixaDeDialogoLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(lblTextBattle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jp_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        getContentPane().add(jp_CaixaDeDialogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 820, 230));
+
+        pb_Vida.setBackground(new java.awt.Color(0, 0, 0));
+        pb_Vida.setForeground(new java.awt.Color(0, 255, 51));
+        getContentPane().add(pb_Vida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 270, 10));
+
+        lblNomePokemon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNomePokemon.setText("Jogador");
+        getContentPane().add(lblNomePokemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 180, -1));
+
+        lblNomePokemonOponente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNomePokemonOponente.setText("Inimigo");
+        getContentPane().add(lblNomePokemonOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, 170, -1));
+
+        labelMPJogador.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelMPJogador.setText("Mana: 0");
+        getContentPane().add(labelMPJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 140, 20));
+
+        labelVidaJogador1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelVidaJogador1.setText("Vida: 0");
+        getContentPane().add(labelVidaJogador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 110, -1));
+
+        labelVidaInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelVidaInimigo.setText("Vida: 0");
+        getContentPane().add(labelVidaInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 150, 110, -1));
+
+        labelMPInimigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelMPInimigo.setText("Mana: 0");
+        getContentPane().add(labelMPInimigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 110, 160, -1));
+
+        labelJogador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pokemon/charmeleon.png"))); // NOI18N
+        getContentPane().add(labelJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 260, -1));
+
+        labelVilao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pokemon/noivern.png"))); // NOI18N
+        labelVilao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(labelVilao, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 267, -1));
+
+        pb_mana.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_mana, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 270, 10));
+
+        jp_btnAcoes.setLayout(null);
+
+        btnTrocar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTrocar.setText("Trocar");
+        btnTrocar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrocarActionPerformed(evt);
+            }
+        });
+        jp_btnAcoes.add(btnTrocar);
+        btnTrocar.setBounds(190, 30, 130, 70);
+
+        btnRun.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnRun.setText("Fugir");
+        btnRun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunActionPerformed(evt);
+            }
+        });
+        jp_btnAcoes.add(btnRun);
+        btnRun.setBounds(190, 130, 130, 70);
+
+        btnDefense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDefense.setText("Defender");
+        jp_btnAcoes.add(btnDefense);
+        btnDefense.setBounds(30, 130, 130, 70);
+
+        btnAttack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAttack.setText("Atacar");
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttackActionPerformed(evt);
+            }
+        });
+        jp_btnAcoes.add(btnAttack);
+        btnAttack.setBounds(30, 30, 130, 70);
+
+        getContentPane().add(jp_btnAcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 350, 230));
+
+        btnGolpe1.setText("Golpe1");
+        btnGolpe1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe1MouseMoved(evt);
+            }
+        });
+        btnGolpe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolpe1ActionPerformed(evt);
+            }
+        });
+
+        btnGolpe4.setText("Golpe4");
+        btnGolpe4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe4MouseMoved(evt);
+            }
+        });
+        btnGolpe4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolpe4ActionPerformed(evt);
+            }
+        });
+
+        btnGolpe3.setText("Golpe3");
+        btnGolpe3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe3MouseMoved(evt);
+            }
+        });
+        btnGolpe3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolpe3ActionPerformed(evt);
+            }
+        });
+
+        btnGolpe2.setText("Golpe2");
+        btnGolpe2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGolpe2MouseMoved(evt);
+            }
+        });
+        btnGolpe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolpe2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_btnAttacksLayout = new javax.swing.GroupLayout(jp_btnAttacks);
+        jp_btnAttacks.setLayout(jp_btnAttacksLayout);
+        jp_btnAttacksLayout.setHorizontalGroup(
+            jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_btnAttacksLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe4, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(btnGolpe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe3, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(btnGolpe2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
+        );
+        jp_btnAttacksLayout.setVerticalGroup(
+            jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_btnAttacksLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGolpe1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(btnGolpe3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jp_btnAttacksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGolpe4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGolpe2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jp_btnAttacks, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 350, 230));
+
+        jp_btnTroca.setLayout(null);
+
+        iconPoke1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconBlastoise.png"))); // NOI18N
+        iconPoke1.setText("jLabel1");
+        jp_btnTroca.add(iconPoke1);
+        iconPoke1.setBounds(20, 30, 70, 70);
+
+        iconPoke2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconGengar.png"))); // NOI18N
+        iconPoke2.setText("jLabel1");
+        jp_btnTroca.add(iconPoke2);
+        iconPoke2.setBounds(177, 126, 70, 60);
+
+        iconPoke3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconVenusaur.png"))); // NOI18N
+        iconPoke3.setText("jLabel1");
+        jp_btnTroca.add(iconPoke3);
+        iconPoke3.setBounds(180, 30, 70, 70);
+
+        iconPoke4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconBlissey.png"))); // NOI18N
+        iconPoke4.setText("jLabel1");
+        jp_btnTroca.add(iconPoke4);
+        iconPoke4.setBounds(20, 120, 70, 70);
+        jp_btnTroca.add(pb_iconPoke1HP);
+        pb_iconPoke1HP.setBounds(90, 70, 70, 10);
+        jp_btnTroca.add(pb_iconPoke2HP);
+        pb_iconPoke2HP.setBounds(250, 160, 70, 10);
+        jp_btnTroca.add(pb_iconPoke3HP);
+        pb_iconPoke3HP.setBounds(250, 70, 70, 10);
+        jp_btnTroca.add(pb_iconPoke4HP);
+        pb_iconPoke4HP.setBounds(90, 160, 70, 10);
+        jp_btnTroca.add(pb_iconPoke1Mana);
+        pb_iconPoke1Mana.setBounds(90, 50, 70, 10);
+        jp_btnTroca.add(pb_iconPoke2Mana);
+        pb_iconPoke2Mana.setBounds(250, 140, 70, 10);
+        jp_btnTroca.add(pb_iconPoke3Mana);
+        pb_iconPoke3Mana.setBounds(250, 50, 70, 10);
+        jp_btnTroca.add(pb_iconPoke4Mana);
+        pb_iconPoke4Mana.setBounds(90, 140, 70, 10);
+
+        lbl_hpPoke1.setText("hp / maxHP");
+        jp_btnTroca.add(lbl_hpPoke1);
+        lbl_hpPoke1.setBounds(90, 80, 70, 16);
+
+        lbl_hpPoke2.setText("hp / maxHP");
+        jp_btnTroca.add(lbl_hpPoke2);
+        lbl_hpPoke2.setBounds(250, 170, 70, 16);
+
+        lbl_hpPoke3.setText("hp / maxHP");
+        jp_btnTroca.add(lbl_hpPoke3);
+        lbl_hpPoke3.setBounds(250, 80, 70, 16);
+
+        lbl_hpPoke4.setText("hp / maxHP");
+        jp_btnTroca.add(lbl_hpPoke4);
+        lbl_hpPoke4.setBounds(90, 170, 70, 16);
+
+        lbl_manaPoke1.setText("mana/maxMa");
+        jp_btnTroca.add(lbl_manaPoke1);
+        lbl_manaPoke1.setBounds(90, 60, 80, 10);
+
+        lbl_manaPoke2.setText("mana/maxMa");
+        jp_btnTroca.add(lbl_manaPoke2);
+        lbl_manaPoke2.setBounds(250, 150, 80, 10);
+
+        lbl_manaPoke3.setText("mana/maxMa");
+        jp_btnTroca.add(lbl_manaPoke3);
+        lbl_manaPoke3.setBounds(250, 60, 80, 10);
+
+        lbl_manaPoke4.setText("mana/maxMa");
+        jp_btnTroca.add(lbl_manaPoke4);
+        lbl_manaPoke4.setBounds(90, 150, 80, 10);
+
+        btnTroca1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTroca1.setText("Poke1");
+        btnTroca1.setMargin(new java.awt.Insets(2, 40, 40, 14));
+        btnTroca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTroca1ActionPerformed(evt);
+            }
+        });
+        jp_btnTroca.add(btnTroca1);
+        btnTroca1.setBounds(20, 30, 150, 70);
+
+        btnTroca2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTroca2.setText("Poke2");
+        btnTroca2.setMargin(new java.awt.Insets(2, 40, 40, 14));
+        btnTroca2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTroca2ActionPerformed(evt);
+            }
+        });
+        jp_btnTroca.add(btnTroca2);
+        btnTroca2.setBounds(180, 120, 150, 70);
+
+        btnTroca3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTroca3.setText("Poke3");
+        btnTroca3.setMargin(new java.awt.Insets(2, 40, 40, 14));
+        btnTroca3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTroca3ActionPerformed(evt);
+            }
+        });
+        jp_btnTroca.add(btnTroca3);
+        btnTroca3.setBounds(180, 30, 150, 70);
+
+        btnTroca4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTroca4.setText("Poke4");
+        btnTroca4.setMargin(new java.awt.Insets(2, 40, 40, 14));
+        btnTroca4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTroca4ActionPerformed(evt);
+            }
+        });
+        jp_btnTroca.add(btnTroca4);
+        btnTroca4.setBounds(20, 120, 150, 70);
+
+        getContentPane().add(jp_btnTroca, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 350, 230));
+
+        pb_VidaOponente.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_VidaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 270, 10));
+
+        pb_ManaOponente.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(pb_ManaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 270, 10));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/field_1.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
+        jp_btnAttacks.setVisible(true);
+        jp_btnAcoes.setVisible(false);
+        
+        btnGolpe1.setText(currentPokemon.getAttacks()[0].getName());
+        btnGolpe2.setText(currentPokemon.getAttacks()[1].getName());
+        btnGolpe3.setText(currentPokemon.getAttacks()[2].getName());
+        btnGolpe4.setText(currentPokemon.getAttacks()[3].getName());
+        
+        lblTextBattle.setText("Com qual ataque o " + currentPokemon.getName() + " vai atacar ?");
+    }//GEN-LAST:event_btnAttackActionPerformed
+
+    private void btnGolpe1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe1MouseMoved
+        AlterarInfoDeAtaque(0);
+    }//GEN-LAST:event_btnGolpe1MouseMoved
+
+    private void btnGolpe2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe2MouseMoved
+        AlterarInfoDeAtaque(1);
+    }//GEN-LAST:event_btnGolpe2MouseMoved
+
+    private void btnGolpe3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe3MouseMoved
+        AlterarInfoDeAtaque(2); 
+    }//GEN-LAST:event_btnGolpe3MouseMoved
+
+    private void btnGolpe4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGolpe4MouseMoved
+        AlterarInfoDeAtaque(3);
+    }//GEN-LAST:event_btnGolpe4MouseMoved
+
+    private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        lblTextBattle.setText("Você não pode fugir da primeira batalha. Tente escolher outras ações!");
+    }//GEN-LAST:event_btnRunActionPerformed
+
+    private void btnTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrocarActionPerformed
+        alterarPainelTroca();
+    }//GEN-LAST:event_btnTrocarActionPerformed
+
+    private void btnTroca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroca1ActionPerformed
+        TrocarPokemon(0);
+    }//GEN-LAST:event_btnTroca1ActionPerformed
+
+    private void btnTroca2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroca2ActionPerformed
+        TrocarPokemon(1);
+    }//GEN-LAST:event_btnTroca2ActionPerformed
+
+    private void btnTroca3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroca3ActionPerformed
+        TrocarPokemon(2);
+    }//GEN-LAST:event_btnTroca3ActionPerformed
+
+    private void btnTroca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroca4ActionPerformed
+        TrocarPokemon(3);
+    }//GEN-LAST:event_btnTroca4ActionPerformed
+
+    private void btnGolpe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpe1ActionPerformed
+        ataque(0);
+    }//GEN-LAST:event_btnGolpe1ActionPerformed
+
+    private void btnGolpe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpe2ActionPerformed
+        ataque(1);
+    }//GEN-LAST:event_btnGolpe2ActionPerformed
+
+    private void btnGolpe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpe3ActionPerformed
+        ataque(2);
+    }//GEN-LAST:event_btnGolpe3ActionPerformed
+
+    private void btnGolpe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpe4ActionPerformed
+        ataque(3);
+    }//GEN-LAST:event_btnGolpe4ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Battle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Battle().setVisible(true);
+            }
+        });
+    }
+    
+    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel InfoGolpeNome;
+    private javax.swing.JButton btnAttack;
+    private javax.swing.JButton btnDefense;
+    private javax.swing.JButton btnGolpe1;
+    private javax.swing.JButton btnGolpe2;
+    private javax.swing.JButton btnGolpe3;
+    private javax.swing.JButton btnGolpe4;
+    private javax.swing.JButton btnRun;
+    private javax.swing.JButton btnTroca1;
+    private javax.swing.JButton btnTroca2;
+    private javax.swing.JButton btnTroca3;
+    private javax.swing.JButton btnTroca4;
+    private javax.swing.JButton btnTrocar;
+    private javax.swing.JLabel iconPoke1;
+    private javax.swing.JLabel iconPoke2;
+    private javax.swing.JLabel iconPoke3;
+    private javax.swing.JLabel iconPoke4;
+    private javax.swing.JLabel infoGolpeAtributo;
+    private javax.swing.JLabel infoGolpeCusto;
+    private javax.swing.JLabel infoGolpeDano;
+    private javax.swing.JLabel infoGolpeTipo;
+    private javax.swing.JPanel jp_CaixaDeDialogo;
+    private javax.swing.JPanel jp_btnAcoes;
+    private javax.swing.JPanel jp_btnAttacks;
+    private javax.swing.JPanel jp_btnTroca;
+    private javax.swing.JPanel jp_info;
+    private javax.swing.JLabel labelJogador;
+    private javax.swing.JLabel labelMPInimigo;
+    private javax.swing.JLabel labelMPJogador;
+    private javax.swing.JLabel labelVidaInimigo;
+    private javax.swing.JLabel labelVidaJogador1;
+    private javax.swing.JLabel labelVilao;
+    private javax.swing.JLabel lblNomePokemon;
+    private javax.swing.JLabel lblNomePokemonOponente;
+    private javax.swing.JLabel lblTextBattle;
+    private javax.swing.JLabel lbl_hpPoke1;
+    private javax.swing.JLabel lbl_hpPoke2;
+    private javax.swing.JLabel lbl_hpPoke3;
+    private javax.swing.JLabel lbl_hpPoke4;
+    private javax.swing.JLabel lbl_manaPoke1;
+    private javax.swing.JLabel lbl_manaPoke2;
+    private javax.swing.JLabel lbl_manaPoke3;
+    private javax.swing.JLabel lbl_manaPoke4;
+    private javax.swing.JProgressBar pb_ManaOponente;
+    private javax.swing.JProgressBar pb_Vida;
+    private javax.swing.JProgressBar pb_VidaOponente;
+    private javax.swing.JProgressBar pb_iconPoke1HP;
+    private javax.swing.JProgressBar pb_iconPoke1Mana;
+    private javax.swing.JProgressBar pb_iconPoke2HP;
+    private javax.swing.JProgressBar pb_iconPoke2Mana;
+    private javax.swing.JProgressBar pb_iconPoke3HP;
+    private javax.swing.JProgressBar pb_iconPoke3Mana;
+    private javax.swing.JProgressBar pb_iconPoke4HP;
+    private javax.swing.JProgressBar pb_iconPoke4Mana;
+    private javax.swing.JProgressBar pb_mana;
+    // End of variables declaration//GEN-END:variables
+
+    private void AtualizarInfoBarJogador(){
+        labelJogador.setIcon(currentPokemon.getSprite());
+        lblTextBattle.setText("O que o " + currentPokemon.getName() + " deve fazer?");
+        lblNomePokemon.setText(currentPokemon.getName());
+        pb_Vida.setMaximum(currentPokemon.getHP());
+        labelVidaJogador1.setText("Vida: " + String.valueOf(currentPokemon.getCurrentHP()));
+        pb_Vida.setValue(currentPokemon.getCurrentHP());
+        labelMPJogador.setText("Mana: " + String.valueOf(currentPokemon.getMana()));
+        pb_mana.setValue(currentPokemon.getMana());
+    }
+    
+    private void atualizarStatusJogador(){
+        pb_Vida.setValue(currentPokemon.getCurrentHP());
+        pb_mana.setValue(currentPokemon.getMana());
+        labelVidaJogador1.setText("Vida: " + String.valueOf(currentPokemon.getCurrentHP()));
+        labelMPJogador.setText("Mana: " + String.valueOf(currentPokemon.getMana()));
+    }
+
+    
+    private void AtualizarInfoBarVilao(){
+        labelVilao.setIcon(currentEnemyPokemon.getSprite());
+        pb_VidaOponente.setMaximum(currentEnemyPokemon.getHP());
+        currentEnemyPokemon.setCurrentHP(currentEnemyPokemon.getHP());
+        pb_VidaOponente.setValue(currentEnemyPokemon.getCurrentHP());
+        pb_ManaOponente.setValue(currentEnemyPokemon.getMana());
+        lblNomePokemonOponente.setText(currentEnemyPokemon.getName());
+        labelVidaInimigo.setText("Vida: " + String.valueOf(currentEnemyPokemon.getCurrentHP()));
+        labelMPInimigo.setText("Mana: " + String.valueOf(currentEnemyPokemon.getMana()));
+    }
+    
+    private void atualizarStatusVilao(){
+        pb_VidaOponente.setValue(currentEnemyPokemon.getCurrentHP());
+        pb_ManaOponente.setValue(currentEnemyPokemon.getMana());
+        labelVidaInimigo.setText("Vida: " + String.valueOf(currentEnemyPokemon.getCurrentHP()));
+        labelMPInimigo.setText("Mana: " + String.valueOf(currentEnemyPokemon.getMana()));
+    }
+    
+    private void AlterarInfoDeAtaque(int i){
+        jp_info.setVisible(true);
+        
+        InfoGolpeNome.setText(currentPokemon.getAttacks()[i].getName());
+        infoGolpeTipo.setText("Tipo: " + currentPokemon.getAttacks()[i].getType());
+        infoGolpeDano.setText("Dano: " + String.valueOf(currentPokemon.getAttacks()[i].getPower()));
+        infoGolpeAtributo.setText("Atributo: " + currentPokemon.getAttacks()[i].getAttribute());
+        infoGolpeCusto.setText("Custo: " + String.valueOf(currentPokemon.getAttacks()[i].getCost()));
+    }
+    private void TrocarPokemon(int i){
+        if (outPokemon[i].isVivo() == false){
+            lblTextBattle.setText("Você não pode trocar pra "+ outPokemon[i].getName() + " porque ele está morto");
+        } else{
+            jp_btnAcoes.setVisible(true);
+            jp_btnTroca.setVisible(false);
+
+            Pokemon trocaAtual = currentPokemon;
+            Pokemon trocaProximo = outPokemon[i];
+
+            currentPokemon = trocaProximo;
+            outPokemon[i] = trocaAtual;
+            
+            AtualizarInfoBarJogador();
+        }
+        
+    }
+    
+    private void combateInfo(Pokemon pokemon,Moves move){
+        if (pokemon == currentPokemon){
+            lblTextBattle.setText(currentPokemon.getName() + " usou " + move.getName() + " e deu " + currentPokemon.attack(currentEnemyPokemon, move) + " de dano!");
+        } else {
+            lblTextBattle.setText(currentEnemyPokemon.getName() + " usou " + move.getName() + " e deu " + currentEnemyPokemon.attack(currentPokemon, move) + " de dano!");
+        }
+    }
+    
+    private void ataque(int i){
+        Moves move = currentPokemon.getAttacks()[i];
+        
+        battleManager.playerAttack(currentPokemon, currentEnemyPokemon, move);
+        combateInfo(currentPokemon, move);
+        resetInfos();
+        atualizarStatusVilao();
+        enemyTurn = true;
+    }
+    
+    private void resetInfos(){
+        jp_btnAcoes.setVisible(true);
+        jp_btnAttacks.setVisible(false);
+        jp_info.setVisible(false);
+    }
+    
+    private void alterarPainelTroca (){
+        jp_btnTroca.setVisible(true);
+        jp_btnAcoes.setVisible(false);
+        
+        iconPoke1.setIcon(outPokemon[0].getIcon());
+        iconPoke2.setIcon(outPokemon[1].getIcon());
+        iconPoke3.setIcon(outPokemon[2].getIcon());
+        iconPoke4.setIcon(outPokemon[3].getIcon());
+        
+        btnTroca1.setText(outPokemon[0].getName());
+        btnTroca2.setText(outPokemon[1].getName());
+        btnTroca3.setText(outPokemon[2].getName());
+        btnTroca4.setText(outPokemon[3].getName());
+        
+        pb_iconPoke1HP.setValue(outPokemon[0].getCurrentHP());
+        pb_iconPoke2HP.setValue(outPokemon[1].getCurrentHP());
+        pb_iconPoke3HP.setValue(outPokemon[2].getCurrentHP());
+        pb_iconPoke4HP.setValue(outPokemon[3].getCurrentHP());
+        pb_iconPoke1Mana.setValue(outPokemon[0].getMana());
+        pb_iconPoke2Mana.setValue(outPokemon[1].getMana());
+        pb_iconPoke3Mana.setValue(outPokemon[2].getMana());
+        pb_iconPoke4Mana.setValue(outPokemon[3].getMana());
+        
+        lbl_hpPoke1.setText(String.valueOf(outPokemon[0].getCurrentHP())+ "/100" + " HP");
+        lbl_hpPoke2.setText(String.valueOf(outPokemon[1].getCurrentHP())+ "/100" + " HP");
+        lbl_hpPoke3.setText(String.valueOf(outPokemon[2].getCurrentHP())+ "/100" + " HP");
+        lbl_hpPoke4.setText(String.valueOf(outPokemon[3].getCurrentHP())+ "/100" + " HP");
+        lbl_manaPoke1.setText(String.valueOf(outPokemon[0].getMana())+ "/100" + " Mana");
+        lbl_manaPoke2.setText(String.valueOf(outPokemon[1].getMana())+ "/100" + " Mana");
+        lbl_manaPoke3.setText(String.valueOf(outPokemon[2].getMana())+ "/100" + " Mana");
+        lbl_manaPoke4.setText(String.valueOf(outPokemon[3].getMana())+ "/100" + " Mana");
+        
+        lblTextBattle.setText("O " + currentPokemon.getName() + " vai ser trocado por qual pokemon ?");
+    }
+}

@@ -13,7 +13,10 @@ import javax.swing.ImageIcon;
  */
 public class Pokemon {
     private ImageIcon sprite;
+    private ImageIcon icon;
     private String name;
+    private String Attribute;
+    private String Attribute2;
     private int HP;
     private int currentHP;
     private int attack;
@@ -23,12 +26,15 @@ public class Pokemon {
     private int speed;
     private int level;
     private int mana;
+    private boolean vivo;
     
     private Moves[] attacks = new Moves[4];
 
-    public Pokemon(ImageIcon sprite, String name, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {
+    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
         this.sprite = sprite;
+        this.icon = icon;
         this.name = name;
+        this.Attribute = attribute;
         this.HP = HP;
         this.attack = attack;
         this.defense = defense;
@@ -38,8 +44,26 @@ public class Pokemon {
         this.level = level;
         this.mana = mana;
         this.currentHP = HP;
+        this.vivo = vivo;
     }
 
+    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
+        this.sprite = sprite;
+        this.icon = icon;
+        this.name = name;
+        this.Attribute = Attribute;
+        this.Attribute2 = Attribute2;
+        this.HP = HP;
+        this.attack = attack;
+        this.defense = defense;
+        this.specialAttack = specialAttack;
+        this.specialDefense = specialDefense;
+        this.speed = speed;
+        this.level = level;
+        this.mana = mana;
+        this.vivo = vivo;
+    }
+    
     public ImageIcon getSprite() {
         return sprite;
     }
@@ -48,12 +72,36 @@ public class Pokemon {
         this.sprite = sprite;
     }
 
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAttribute() {
+        return Attribute;
+    }
+
+    public void setAttribute(String Attribute) {
+        this.Attribute = Attribute;
+    }
+
+    public String getAttribute2() {
+        return Attribute2;
+    }
+
+    public void setAttribute2(String Attribute2) {
+        this.Attribute2 = Attribute2;
     }
 
     public int getHP() {
@@ -128,6 +176,14 @@ public class Pokemon {
         this.currentHP = currentHP;
     }
 
+    public boolean isVivo() {
+        return vivo;
+    }
+
+    public void setVivo(boolean vivo) {
+        this.vivo = vivo;
+    }
+    
     public Moves[] getAttacks() {
         return attacks;
     }
@@ -137,9 +193,9 @@ public class Pokemon {
     }
     
     
-    public int attack(Pokemon enemy){
-        int damage = (int) (Math.floor(Math.floor(Math.floor(2 * level / 5 + 2) * attack * 1 / enemy.defense) / 50) + 2);
-        
+    public int attack(Pokemon enemy, Moves move){
+        int damage = (int) (Math.floor(Math.floor(Math.floor(2 * level / 5 + 2) * attack * move.getPower() / enemy.defense) / 50) + 2);
+
         return damage;
     }
     
