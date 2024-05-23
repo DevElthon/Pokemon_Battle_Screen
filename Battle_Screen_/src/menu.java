@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -14,6 +17,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        setSize(1280, 720);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,9 +33,10 @@ public class Menu extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnStart.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -40,17 +46,19 @@ public class Menu extends javax.swing.JFrame {
                 btnStartActionPerformed(evt);
             }
         });
-        getContentPane().add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 164, -1));
+        getContentPane().add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 164, -1));
 
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnClose.setText("CLOSE");
-        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 164, -1));
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 550, 164, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/800px-Pokémon_logo_English.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pokemon-in-the-summer-1280x720.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_Background.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -58,8 +66,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
         new Battle().setVisible(true);
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Voce gostaria de sair do jogo ?", "Selecione", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCloseActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -88,7 +105,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Battle().setVisible(true);
+                new Menu().setVisible(true);
             }
         });
     }
@@ -98,6 +115,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
