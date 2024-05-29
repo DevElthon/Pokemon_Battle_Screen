@@ -18,8 +18,7 @@ public class Mamoswine extends Pokemon{
     Moves blizzard = new Moves("blizzard", 110, "Special", "Ice", 80, 40);
     Moves iceShard = new Moves("Ice Shard", 40, "Physical", "Ice", 100, 0);
     
-    public Mamoswine(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
+    public Mamoswine() {
     
         Moves attacks[] = {earthPower, earthquake, blizzard, iceShard};
         setAttacks(attacks);

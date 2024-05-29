@@ -18,11 +18,27 @@ public class Gengar extends Pokemon{
     Moves lick = new Moves("Lick", 35,"Physical", "Ghost", 100, 0);
     Moves poisonJab = new Moves("Poison Jab", 80, "Physical", "Poison", 100, 0);
     
-    public Gengar(ImageIcon sprite, ImageIcon icon, String name, String attribute, String attibute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, attribute,attibute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
-        
+    public Gengar() {
         Moves attacks[] = {shadowBall, psyshock, lick, poisonJab};
         setAttacks(attacks);
+        
+        setName("Gengar");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/gengar.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconGengar.png")));
+        
+        // Stats
+        setHP(324);
+        setAttack(251);
+        setDefense(240);
+        setSpecialAttack(394);
+        setSpecialDefense(273);
+        setSpeed(350);
+        
+        //Atributos
+        setAttribute("Ghost");
+        setAttribute2("Poison");
     }
    
 }

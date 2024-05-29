@@ -18,11 +18,28 @@ public class Gardevoir extends Pokemon{
     Moves moonblast = new Moves("Moonblast", 95, "Special", "Fairy", 100, 25);
     Moves zenHeadbutt = new Moves("Zen Headbutt", 80,"Physical", "Psychic", 90, 0);
     
-    public Gardevoir(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
+    public Gardevoir() {
         
         Moves attacks[] = {psyshock, headbutt, moonblast, zenHeadbutt};
         setAttacks(attacks);
+        
+        setName("Gardevoir");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/gardevoir.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconGardevoir.png")));
+        
+        // Stats
+        setHP(340);
+        setAttack(251);
+        setDefense(251);
+        setSpecialAttack(383);
+        setSpecialDefense(361);
+        setSpeed(284);
+        
+        //Atributos
+        setAttribute("Psychic");
+        setAttribute2("Fairy");
     }
 
 

@@ -18,11 +18,30 @@ public class Greninja extends Pokemon{
     Moves gunkShot = new Moves("Gunk Shot", 100, "Physical", "Poison", 70, 0);
     Moves nightSlash = new Moves("Night Slash", 70, "Physical", "Dark", 100, 0);
     
-    public Greninja(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
+    public Greninja() {
         
         Moves attacks[] = {hydroPump, darkPulse, gunkShot, nightSlash};
         setAttacks(attacks);
+        
+        setName("Greninja");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/Greninja.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconGreninja.png")));
+        
+        // Stats
+        setHP(320);
+        setAttack(249);
+        setDefense(236);
+        setSpecialAttack(284);
+        setSpecialDefense(251);
+        setSpeed(284);
+        
+        //Atributos
+        setAttribute("Water");
+        setAttribute2("Dark");
+        
+        
     }
     
 }

@@ -21,14 +21,14 @@ import javax.swing.Timer;
 public class Battle extends javax.swing.JFrame {
 
     //Pokémons
-    Charmeleon charmeleon = new Charmeleon(new ImageIcon(getClass().getResource("/images/pokemon/charmeleon.png")), new ImageIcon(getClass().getResource("/images/icon/iconCharmeleon.png")), "Charmeleon", "Fire", 100, 10, 10, 10, 10, 10, 10, 10, true);
-    Blastoise blastoise = new Blastoise(new ImageIcon(getClass().getResource("/images/pokemon/blastoise.png")), new ImageIcon(getClass().getResource("/images/icon/iconBlastoise.png")), "Blastoise", "Water",100, 100, 10, 10, 10, 10, 10, 10, true);
-    Noivern noivern = new Noivern(new ImageIcon(getClass().getResource("/images/pokemon/noivern.png")), new ImageIcon(getClass().getResource("/images/icon/iconNoivern.png")), "Noivern", "Flying", "Dragon", 100, 100, 10, 10, 10, 10, 10, 10, true);
-    Ampharos ampharos = new Ampharos(new ImageIcon(getClass().getResource("/images/pokemon/ampharos.png")), new ImageIcon(getClass().getResource("/images/icon/iconAmpharos.png")), "Ampharos", "Electric", 100, 100, 10, 10, 10, 10, 10, 10, true);
-    Gengar gengar = new Gengar(new ImageIcon(getClass().getResource("/images/pokemon/gengar.png")), new ImageIcon(getClass().getResource("/images/icon/iconGengar.png")), "Gengar", "Ghost", "Poison", 100, 100, 10, 10, 10, 10, 10, 10, true);
-    Gardevoir gardevoir = new Gardevoir(new ImageIcon(getClass().getResource("/images/pokemon/gardevoir.png")), new ImageIcon(getClass().getResource("/images/icon/iconGardevoir.png")), "Gardevoir", "Fairy", "Psychic", 100, 100, 10, 10, 10, 10, 10, 10, true);
-    Venusaur venusaur = new Venusaur(new ImageIcon(getClass().getResource("/images/pokemon/venusaur.png")), new ImageIcon(getClass().getResource("/images/icon/iconVenusaur.png")), "Venusaur", "Grass", "Poison", 100, 100, 10, 10, 10, 10, 10, 10, true);
-    Blissey blissey = new Blissey(new ImageIcon(getClass().getResource("/images/pokemon/blissey.png")), new ImageIcon(getClass().getResource("/images/icon/iconBlissey.png")), "Blissey", "Normal", 100, 100, 10, 10, 10, 10, 10, 10, true);
+    Charmeleon charmeleon = new Charmeleon();
+    Ampharos ampharos = new Ampharos();
+    Blastoise blastoise = new Blastoise();
+    Gengar gengar = new Gengar();
+    Blissey blissey = new Blissey();
+    Noivern noivern = new Noivern();
+    Venusaur venusaur = new Venusaur();
+    Gardevoir gardevoir = new Gardevoir();
     
     //Pokémons atuais da batalha
     Pokemon currentPokemon = charmeleon;

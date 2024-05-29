@@ -18,11 +18,26 @@ public class Blastoise extends Pokemon{
     Moves bite = new Moves("Bite", 40, "Physical", "Dark", 60, 0);
     Moves protect = new Moves("Hydro Pump", 40, "Special", "Water", 100, 40);
 
-    public Blastoise(ImageIcon sprite,ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, attribute, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
-        
+    public Blastoise() {
         Moves attacks[] = {tackle, waterGun, bite, protect};
         setAttacks(attacks);
+        
+        setName("Blastoise");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/blastoise.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconBlastoise.png")));
+        
+        // Stats
+        setHP(362);
+        setAttack(291);
+        setDefense(328);
+        setSpecialAttack(295);
+        setSpecialDefense(339);
+        setSpeed(280);
+        
+        //Atributos
+        setAttribute("Water");
     }
     
     

@@ -18,11 +18,27 @@ public class Charmeleon extends Pokemon{
     Moves slash = new Moves("Slash", 70,"Physical", "Normal", 60, 0);
     Moves fireSpin = new Moves("Fire Spin", 120, "Special", "Fire", 100, 30);
     
-    public Charmeleon(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, attribute, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
-        
+    public Charmeleon() {        
         Moves attacks[] = {ember, fireFang, slash, fireSpin};
         setAttacks(attacks);
+        
+        setName("Charmeleon");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/charmeleon.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconCharmeleon.png")));
+        
+        // Stats
+        setHP(248);
+        setAttack(317);
+        setDefense(256);
+        setSpecialAttack(335);
+        setSpecialDefense(265);
+        setSpeed(377);
+        
+        //Atributos
+        setAttribute("Fire");
+        
     }
     
     

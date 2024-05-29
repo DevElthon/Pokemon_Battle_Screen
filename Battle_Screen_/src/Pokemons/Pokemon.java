@@ -24,13 +24,17 @@ public class Pokemon {
     private int specialAttack;
     private int specialDefense;
     private int speed;
-    private int level;
+    private int level = 100;
     private int mana;
-    private boolean vivo;
+    private boolean vivo = true;
     
     private Moves[] attacks = new Moves[4];
+    
+    public Pokemon() {
+        
+    }
 
-    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
+    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {
         this.sprite = sprite;
         this.icon = icon;
         this.name = name;
@@ -41,13 +45,12 @@ public class Pokemon {
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
-        this.level = level;
         this.mana = mana;
         this.currentHP = HP;
-        this.vivo = vivo;
+        this.vivo = true;
     }
 
-    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
+    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {
         this.sprite = sprite;
         this.icon = icon;
         this.name = name;
@@ -59,9 +62,9 @@ public class Pokemon {
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
-        this.level = level;
+        this.level = 100;
         this.mana = mana;
-        this.vivo = vivo;
+        this.vivo = true;
     }
     
     public ImageIcon getSprite() {

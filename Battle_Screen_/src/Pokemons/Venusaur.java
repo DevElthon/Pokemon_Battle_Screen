@@ -18,11 +18,27 @@ public class Venusaur extends Pokemon{
     Moves gigaDrain = new Moves("Giga Drain", 75, "Special", "Grass", 100, 20);
     Moves furyCutter = new Moves("Fury Cutter", 40, "Physical", "Bug", 100, 0);
     
-    public Venusaur(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
-        
+    public Venusaur() {        
         Moves attacks[] = {sludgeBomb, earthquake, gigaDrain, furyCutter};
         setAttacks(attacks);
+        
+        setName("Venusaur");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/venusaur.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconVenusaur.png")));
+        
+        // Stats
+        setHP(364);
+        setAttack(289);
+        setDefense(291);
+        setSpecialAttack(328);
+        setSpecialDefense(328);
+        setSpeed(284);
+        
+        //Atributos
+        setAttribute("Grass");
+        setAttribute2("Poison");
     }
 
 }

@@ -18,11 +18,27 @@ public class Blissey extends Pokemon{
     Moves blizzard = new Moves("blizzard", 110, "Special", "Ice", 80, 40);
     Moves retaliate = new Moves("Retaliate", 70, "Physical", "Normal", 100, 0);
 
-    public Blissey(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, attribute, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
+    public Blissey() {
         
         Moves attacks[] = {hyperBean, doubleEdge, blizzard, retaliate};
         setAttacks(attacks);
+        
+        setName("Blissey");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/blissey.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconBlissey.png")));
+        
+        // Stats
+        setHP(714);
+        setAttack(130);
+        setDefense(130);
+        setSpecialAttack(273);
+        setSpecialDefense(405);
+        setSpeed(229);
+        
+        //Atributos
+        setAttribute("Normal");
     }
     
 }

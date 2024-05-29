@@ -18,8 +18,7 @@ public class Brozong extends Pokemon{
     Moves flashCannon = new Moves("Flash Cannon", 80, "Special", "Steel", 100, 10);
     Moves zenHeadbutt = new Moves("Zen Headbutt", 80,"Physical", "Psychic", 90, 0);
 
-    public Brozong(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
+    public Brozong() {
         
         Moves attacks[] = {psywave, ironhead, flashCannon, zenHeadbutt};
         setAttacks(attacks);

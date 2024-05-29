@@ -19,11 +19,27 @@ public class Noivern extends Pokemon{
     Moves aerialAce = new Moves("Aerial Ace", 60, "Physical", "Flying", 100, 0);
     
     
-    public Noivern(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana, boolean vivo) {
-        super(sprite, icon, name, Attribute, Attribute2, HP, attack, defense, specialAttack, specialDefense, speed, level, mana, vivo);
-        
+    public Noivern() {        
         Moves attacks[] = {hurricane, uTurn, hyperBean, aerialAce};
         setAttacks(attacks);
+        
+        setName("Noivern");
+        
+        //images
+        setSprite(new ImageIcon(getClass().getResource("/images/pokemon/noivern.png")));
+        setIcon(new ImageIcon(getClass().getResource("/images/icon/iconNoivern.png")));
+        
+        // Stats
+        setHP(374);
+        setAttack(262);
+        setDefense(284);
+        setSpecialAttack(322);
+        setSpecialDefense(284);
+        setSpeed(379);
+        
+        //Atributos
+        setAttribute("Flying");
+        setAttribute2("Dragon");
     }
 
    
