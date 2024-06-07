@@ -245,7 +245,7 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().add(iconTypePlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
         iconTypePlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/attribute/Flying_icon_SV.png"))); // NOI18N
-        getContentPane().add(iconTypePlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 117, -1, -1));
+        getContentPane().add(iconTypePlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 118, -1, -1));
 
         lblNomePokemon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblNomePokemon.setText("Jogador");
