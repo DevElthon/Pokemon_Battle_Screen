@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Poderes;
 
+import javax.swing.ImageIcon;
 /**
  *
  * @author samuel
  */
 public class Moves {
+    private ImageIcon sprite;
     private String name;
     private int power;
     private String type;
@@ -16,37 +14,30 @@ public class Moves {
     private int accuracy;
     private int cost;
 
-    public Moves(String name, int power, String type, String atribute, int accuracy, int cost) {
+    public Moves(String name, int power, String type, String atribute, int accuracy, int cost, ImageIcon sprite) {
         this.name = name;
         this.power = power;
         this.attribute = atribute;
         this.type = type;
         this.accuracy = accuracy;
         this.cost = cost;
+        this.sprite = sprite;
     }
 
+    public ImageIcon getSprite(){
+        return sprite;
+    }
+    
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getPower() {
         return power;
     }
 
-    public void setPower(int power) {
-        this.power = power;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getAccuracy() {
@@ -61,20 +52,7 @@ public class Moves {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
     public String getAttribute() {
         return attribute;
-    }
-
-    public void setAttribute(String Attribute) {
-        this.attribute = Attribute;
-    }
-    
-    
-    
-    
-    
+    }   
 }

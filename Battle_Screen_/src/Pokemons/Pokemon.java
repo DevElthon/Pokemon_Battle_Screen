@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Pokemons;
 
 import Poderes.Moves;
@@ -14,6 +10,8 @@ import javax.swing.ImageIcon;
 public class Pokemon {
     private ImageIcon sprite;
     private ImageIcon icon;
+    private ImageIcon attributeIcon;
+    private ImageIcon attributeIcon2;
     private String name;
     private String Attribute;
     private String Attribute2;
@@ -21,50 +19,15 @@ public class Pokemon {
     private int currentHP;
     private int attack;
     private int defense;
-    private int specialAttack;
-    private int specialDefense;
     private int speed;
     private int level = 100;
     private int mana;
-    private boolean vivo = true;
+    private final int dodge = 30;
     
     private Moves[] attacks = new Moves[4];
     
     public Pokemon() {
         
-    }
-
-    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String attribute, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {
-        this.sprite = sprite;
-        this.icon = icon;
-        this.name = name;
-        this.Attribute = attribute;
-        this.HP = HP;
-        this.attack = attack;
-        this.defense = defense;
-        this.specialAttack = specialAttack;
-        this.specialDefense = specialDefense;
-        this.speed = speed;
-        this.mana = mana;
-        this.currentHP = HP;
-        this.vivo = true;
-    }
-
-    public Pokemon(ImageIcon sprite, ImageIcon icon, String name, String Attribute, String Attribute2, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed, int level, int mana) {
-        this.sprite = sprite;
-        this.icon = icon;
-        this.name = name;
-        this.Attribute = Attribute;
-        this.Attribute2 = Attribute2;
-        this.HP = HP;
-        this.attack = attack;
-        this.defense = defense;
-        this.specialAttack = specialAttack;
-        this.specialDefense = specialDefense;
-        this.speed = speed;
-        this.level = 100;
-        this.mana = mana;
-        this.vivo = true;
     }
     
     public ImageIcon getSprite() {
@@ -81,6 +44,22 @@ public class Pokemon {
 
     public void setIcon(ImageIcon icon) {
         this.icon = icon;
+    }
+
+    public ImageIcon getAttributeIcon() {
+        return attributeIcon;
+    }
+
+    public void setAttributeIcon(ImageIcon attributeIcon) {
+        this.attributeIcon = attributeIcon;
+    }
+
+    public ImageIcon getAttributeIcon2() {
+        return attributeIcon2;
+    }
+
+    public void setAttributeIcon2(ImageIcon attributeIcon2) {
+        this.attributeIcon2 = attributeIcon2;
     }
 
     public String getName() {
@@ -131,22 +110,6 @@ public class Pokemon {
         this.defense = defense;
     }
 
-    public int getSpecialAttack() {
-        return specialAttack;
-    }
-
-    public void setSpecialAttack(int specialAttack) {
-        this.specialAttack = specialAttack;
-    }
-
-    public int getSpecialDefense() {
-        return specialDefense;
-    }
-
-    public void setSpecialDefense(int specialDefense) {
-        this.specialDefense = specialDefense;
-    }
-
     public int getSpeed() {
         return speed;
     }
@@ -179,14 +142,6 @@ public class Pokemon {
         this.currentHP = currentHP;
     }
 
-    public boolean isVivo() {
-        return vivo;
-    }
-
-    public void setVivo(boolean vivo) {
-        this.vivo = vivo;
-    }
-    
     public Moves[] getAttacks() {
         return attacks;
     }
@@ -195,23 +150,13 @@ public class Pokemon {
         this.attacks = attacks;
     }
     
-    
     public int attack(Pokemon enemy, Moves move){
         int damage = (int) (Math.floor(Math.floor(Math.floor(2 * level / 5 + 2) * attack * move.getPower() / enemy.defense) / 50) + 2);
 
         return damage;
     }
     
-    public void defence(int qntPerc){
-        this.defense = this.defense + this.defense * (qntPerc / 100);
-    }
-    
-    public void fugir(){
-        
-    }
-    
-    
-    
-    
-    
+    public int defense(){
+        return dodge; 
+    }   
 }

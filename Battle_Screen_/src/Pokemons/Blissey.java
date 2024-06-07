@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Pokemons;
 
 import Poderes.Moves;
@@ -9,18 +5,18 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Pichau
+ * @author Fernando
  */
 public class Blissey extends Pokemon{
 
-    Moves hyperBean = new Moves("Hyper Bean", 150, "Special", "Normal", 90, 50);
-    Moves doubleEdge = new Moves("Double-Edge", 120, "Physical", "Normal", 50, 0);
-    Moves blizzard = new Moves("blizzard", 110, "Special", "Ice", 80, 40);
-    Moves retaliate = new Moves("Retaliate", 70, "Physical", "Normal", 100, 0);
-
+    Moves hyperBean = new Moves("Hyper Bean", 150, "Special", "Normal", 90, 50,new ImageIcon(getClass().getResource("/images/attribute/120px-NormalIC_LA.png")));
+    Moves doubleEdge = new Moves("Double-Edge", 120, "Physical", "Normal", 50, 0, new ImageIcon(getClass().getResource("/images/attribute/120px-NormalIC_LA.png")));
+    Moves blizzard = new Moves("Blizzard", 110, "Special", "Ice", 80, 40, new ImageIcon(getClass().getResource("/images/attribute/120px-IceIC_LA.png")));
+    Moves retaliate = new Moves("Retaliate", 70, "Physical", "Normal", 100, 0, new ImageIcon(getClass().getResource("/images/attribute/120px-NormalIC_LA.png")));
+    
     public Blissey() {
         
-        Moves attacks[] = {hyperBean, doubleEdge, blizzard, retaliate};
+        Moves attacks[] = {retaliate, doubleEdge, blizzard, hyperBean};
         setAttacks(attacks);
         
         setName("Blissey");
@@ -28,13 +24,12 @@ public class Blissey extends Pokemon{
         //images
         setSprite(new ImageIcon(getClass().getResource("/images/pokemon/blissey.png")));
         setIcon(new ImageIcon(getClass().getResource("/images/icon/iconBlissey.png")));
+        setAttributeIcon(new ImageIcon(getClass().getResource("/images/attribute/Normal_icon_SV.png")));
         
         // Stats
         setHP(714);
         setAttack(130);
         setDefense(130);
-        setSpecialAttack(273);
-        setSpecialDefense(405);
         setSpeed(229);
         
         //Atributos
