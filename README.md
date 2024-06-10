@@ -1,5 +1,4 @@
 # Pokemon_Battle_Screen
-A Branch principal para ser corrigida é nomeada como Prod.
 Link a seguir para o Docs do projeto: https://docs.google.com/document/d/1TcqxOxj8NJLdIraMfcgj3CJxmDnyyWXeQMiGZlMBZhA/edit?usp=sharing
 
 Implementar uma tela de batalha de RPG, onde temos que controlar o personagem principal, 
