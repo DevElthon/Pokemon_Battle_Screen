@@ -8,8 +8,13 @@ O jogo deve ser desenvolvido utilizando a linguagem Java. Para criar uma interfa
 sendo assim, também utilizaremos a IDE Netbeans para desenvolver os códigos do jogo.
 
 Integrantes do Grupo:
+
 Amanda Nogueira – RA: 402001116563
+
 Bruna Bruini – RA: 12524115975
+
 Eltho Douglas Silva Bicudo – RA: 1252419462
+
 Fernando Cruz Cavina  - RA: 12524135495
+
 Samuel Do Carmo Carvalho – RA:  12524149080
