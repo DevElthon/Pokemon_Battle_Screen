@@ -1,5 +1,5 @@
 # Pokemon_Battle_Screen
-Link a seguir para o Docs do projeto: https://docs.google.com/document/d/1TcqxOxj8NJLdIraMfcgj3CJxmDnyyWXeQMiGZlMBZhA/edit?usp=sharing
+Link a seguir para a documentação do projeto: [https://docs.google.com/document/d/1TcqxOxj8NJLdIraMfcgj3CJxmDnyyWXeQMiGZlMBZhA/edit?usp=sharing](https://drive.google.com/drive/folders/1xmmgSaJWi4AeCHjLbI-6s27J7xqqRTe3?usp=sharing)
 
 Implementar uma tela de batalha de RPG, onde temos que controlar o personagem principal, 
 e através de comandos, finalizar a batalha derrotando o inimigo. 
