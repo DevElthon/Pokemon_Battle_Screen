@@ -193,7 +193,7 @@ public class Battle extends javax.swing.JFrame {
             waitToGameOver("Sinto muito, voce foi derrotado. Nao fique triste, cada derrota e um aprendizado!");
         }
         else if(battleController.getEnemy().getHealth() <= 0 && battleController.getPlayer().getHealth() > 0){
-            waitToGameOver("Parabens!!! Voce derrotou seu inimigo. Mantenha-se firma na sua jornada!");
+            waitToGameOver("Parabens!!! Voce derrotou seu inimigo. Mantenha-se firme na sua jornada!");
         }
         else if(battleController.getEnemy().getHealth() <= 0 && battleController.getPlayer().getHealth() <= 0){
             waitToGameOver("O inesperado aconteceu...UM EMPATE!!!");
