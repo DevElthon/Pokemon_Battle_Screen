@@ -9,11 +9,11 @@ sendo assim, também utilizaremos a IDE Netbeans para desenvolver os códigos do
 
 Integrantes do Grupo:
 
-Amanda Nogueira – RA: 402001116563
+Amanda Nogueira – RA: 12524149790
 
 Bruna Bruini – RA: 12524115975
 
-Eltho Douglas Silva Bicudo – RA: 1252419462
+Elthon Douglas Silva Bicudo – RA: 1252419462
 
 Fernando Cruz Cavina  - RA: 12524135495
 
